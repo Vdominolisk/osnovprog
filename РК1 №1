@@ -1,0 +1,53 @@
+#include <iostream>
+
+using namespace std;
+
+void buildTree(int height, int shift, int rotate) {
+    if (rotate == 0) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < height + shift - i - 1; j++) {
+                cout << " ";
+            }
+            for (int k = 0; k < 2 * i + 1; k++) {
+                cout << "*";
+            }
+            cout << endl;
+        }
+    }
+    else if (rotate == 180 || rotate == -180) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < i + shift; j++) {
+                cout << " ";
+            }
+            for (int k = 0; k < height * 2 - 2 * i - 1; k++) {
+                cout << "*";
+            }
+            cout << endl;
+        }
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, "rus");
+    bool exit = false;
+    int v;
+    while (!exit) {
+        int height;
+        int shift;
+        int rotate;
+        cout << "Введите высоту ёлки: ";
+        cin >> height;
+        cout << "Введите отступ: ";
+        cin >> shift;
+        cout << "Введите угол поворота: ";
+        cin >> rotate;
+        cout << endl << "Вот Ваша ёлка:" << endl;
+        buildTree(height, shift, rotate);
+        cout << endl << "Выйти из программы?" << endl << "1. Да" << endl << "2. Нет" << endl;
+        cin >> v;
+        switch (v) {
+        case 1:
+            exit = true;
+        }
+    }
+}
